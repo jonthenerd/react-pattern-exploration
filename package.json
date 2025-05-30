@@ -4,13 +4,15 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "tsc -b && vite build",
-    "lint": "eslint .",
+    "dev": "vite --config config/vite.config.ts",
+    "build": "tsc -b && vite build --config config/vite.config.ts",
+    "lint": "eslint . --config config/eslint.config.js",
     "preview": "vite preview",
     "format": "prettier --write .",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "test": "vitest --project=unit --config config/vitest.config.ts",
+    "test-storybook": "vitest --project=storybook --config config/vitest.config.ts"
   },
   "dependencies": {
     "@tanstack/react-router": "^1.120.13",
