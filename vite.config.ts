@@ -12,8 +12,7 @@ const dirname =
 const resolve = (p: string) => path.join(dirname, p);
 
 // https://vite.dev/config/
-export default defineConfig({
-  root: resolve("./src"),
+export default defineConfig({  
   build: {
     minify: false, // Disable minification for easier debugging    
   },
