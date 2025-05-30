@@ -21,11 +21,11 @@ export default defineConfig({
       },
 
       {
-        extends: resolve("./vite.config.ts"),
+        extends: "vite.config.ts",
         plugins: [
           // The plugin will run tests for the stories defined in your Storybook config
           // See options at: https://storybook.js.org/docs/next/writing-tests/integrations/vitest-addon#storybooktest
-          storybookTest({ configDir: resolve("../.storybook") }),
+          storybookTest({ configDir: resolve("./.storybook") }),
         ],
         test: {
           name: "storybook",
@@ -35,7 +35,7 @@ export default defineConfig({
             provider: "playwright",
             instances: [{ browser: "chromium" }],
           },
-          setupFiles: ["../storybook/vitest.setup.ts"],
+          setupFiles: ["./storybook/vitest.setup.ts"],
         },
       },
     ],

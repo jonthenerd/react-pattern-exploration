@@ -13,17 +13,14 @@ const resolve = (p: string) => path.join(dirname, p);
 
 // https://vite.dev/config/
 export default defineConfig({
-  root: resolve("../src"),
+  root: resolve("./src"),
   build: {
-    minify: false, // Disable minification for easier debugging
-    outDir: resolve("../dist"),
-    emptyOutDir: true,
+    minify: false, // Disable minification for easier debugging    
   },
   plugins: [
     TanStackRouterVite({
       target: "react",
-      autoCodeSplitting: true,
-      routesDirectory: resolve("../src/routes"),
+      autoCodeSplitting: true,      
       routeFileIgnorePattern:
         "components|assets|styles|stories|.spec.|page.tsx",
     }),
@@ -31,7 +28,7 @@ export default defineConfig({
   ],
   resolve: {
     alias: {
-      "@": path.resolve(__dirname, "../src"),
+      "@": path.resolve(__dirname, "./src"),
     },
   },
 });
