@@ -17,78 +17,78 @@ import { Route as AboutIndexImport } from "./../routes/about/index";
 // Create/Update Routes
 
 const IndexRouteRoute = IndexRouteImport.update({
-  id: "/",
-  path: "/",
-  getParentRoute: () => rootRoute,
+    id: "/",
+    path: "/",
+    getParentRoute: () => rootRoute
 } as any);
 
 const AboutIndexRoute = AboutIndexImport.update({
-  id: "/about/",
-  path: "/about/",
-  getParentRoute: () => rootRoute,
+    id: "/about/",
+    path: "/about/",
+    getParentRoute: () => rootRoute
 } as any);
 
 // Populate the FileRoutesByPath interface
 
 declare module "@tanstack/react-router" {
-  interface FileRoutesByPath {
-    "/": {
-      id: "/";
-      path: "/";
-      fullPath: "/";
-      preLoaderRoute: typeof IndexRouteImport;
-      parentRoute: typeof rootRoute;
-    };
-    "/about/": {
-      id: "/about/";
-      path: "/about";
-      fullPath: "/about";
-      preLoaderRoute: typeof AboutIndexImport;
-      parentRoute: typeof rootRoute;
-    };
-  }
+    interface FileRoutesByPath {
+        "/": {
+            id: "/";
+            path: "/";
+            fullPath: "/";
+            preLoaderRoute: typeof IndexRouteImport;
+            parentRoute: typeof rootRoute;
+        };
+        "/about/": {
+            id: "/about/";
+            path: "/about";
+            fullPath: "/about";
+            preLoaderRoute: typeof AboutIndexImport;
+            parentRoute: typeof rootRoute;
+        };
+    }
 }
 
 // Create and export the route tree
 
 export interface FileRoutesByFullPath {
-  "/": typeof IndexRouteRoute;
-  "/about": typeof AboutIndexRoute;
+    "/": typeof IndexRouteRoute;
+    "/about": typeof AboutIndexRoute;
 }
 
 export interface FileRoutesByTo {
-  "/": typeof IndexRouteRoute;
-  "/about": typeof AboutIndexRoute;
+    "/": typeof IndexRouteRoute;
+    "/about": typeof AboutIndexRoute;
 }
 
 export interface FileRoutesById {
-  __root__: typeof rootRoute;
-  "/": typeof IndexRouteRoute;
-  "/about/": typeof AboutIndexRoute;
+    __root__: typeof rootRoute;
+    "/": typeof IndexRouteRoute;
+    "/about/": typeof AboutIndexRoute;
 }
 
 export interface FileRouteTypes {
-  fileRoutesByFullPath: FileRoutesByFullPath;
-  fullPaths: "/" | "/about";
-  fileRoutesByTo: FileRoutesByTo;
-  to: "/" | "/about";
-  id: "__root__" | "/" | "/about/";
-  fileRoutesById: FileRoutesById;
+    fileRoutesByFullPath: FileRoutesByFullPath;
+    fullPaths: "/" | "/about";
+    fileRoutesByTo: FileRoutesByTo;
+    to: "/" | "/about";
+    id: "__root__" | "/" | "/about/";
+    fileRoutesById: FileRoutesById;
 }
 
 export interface RootRouteChildren {
-  IndexRouteRoute: typeof IndexRouteRoute;
-  AboutIndexRoute: typeof AboutIndexRoute;
+    IndexRouteRoute: typeof IndexRouteRoute;
+    AboutIndexRoute: typeof AboutIndexRoute;
 }
 
 const rootRouteChildren: RootRouteChildren = {
-  IndexRouteRoute: IndexRouteRoute,
-  AboutIndexRoute: AboutIndexRoute,
+    IndexRouteRoute: IndexRouteRoute,
+    AboutIndexRoute: AboutIndexRoute
 };
 
 export const routeTree = rootRoute
-  ._addFileChildren(rootRouteChildren)
-  ._addFileTypes<FileRouteTypes>();
+    ._addFileChildren(rootRouteChildren)
+    ._addFileTypes<FileRouteTypes>();
 
 /* ROUTE_MANIFEST_START
 {
