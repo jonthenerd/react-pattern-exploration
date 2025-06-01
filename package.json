@@ -19,7 +19,8 @@
         "@tanstack/react-router": "^1.120.13",
         "@tanstack/react-router-devtools": "^1.120.13",
         "react": "^19.1.0",
-        "react-dom": "^19.1.0"
+        "react-dom": "^19.1.0",
+        "zod": "^3.25.46"
     },
     "devDependencies": {
         "@chromatic-com/storybook": "^4.0.0-0",

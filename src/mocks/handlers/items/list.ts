@@ -1,5 +1,5 @@
 import { db } from "@/mocks/db";
-import { type Item } from "@/model/item";
+import { type Item } from "@/model/items";
 import { http, HttpResponse } from "msw";
 
 type Params = never;

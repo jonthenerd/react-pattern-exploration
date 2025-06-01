@@ -1,4 +1,4 @@
-import { type Item } from "@/model/item";
+import { type Item } from "@/model/items";
 
 export interface ItemsPageProps {
     items: Item[];
