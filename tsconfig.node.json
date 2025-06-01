@@ -4,7 +4,7 @@
         "target": "ES2022",
         "lib": ["ES2023"],
         "module": "ESNext",
-        "types": ["@vitest/browser/providers/playwright"],
+        "types": ["@vitest/browser/providers/playwright", "vite/client"],
         "skipLibCheck": true,
 
         /* Bundler mode */

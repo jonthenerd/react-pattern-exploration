@@ -4,11 +4,11 @@ import reactLogo from "./assets/react.svg";
 import viteLogo from "./assets/vite.svg";
 import "./styles.css";
 
-export function Index() {
+export function Home() {
     const [count, setCount] = useState(0);
 
     return (
-        <div className="index-page">
+        <div className="home-page">
             <div>
                 <a href="https://vite.dev" target="_blank">
                     <img src={viteLogo} className="logo" alt="Vite logo" />

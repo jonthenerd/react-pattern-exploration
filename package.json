@@ -7,6 +7,7 @@
         "dev": "vite",
         "build": "tsc -b && vite build",
         "lint": "eslint .",
+        "predev": "msw init",
         "preview": "vite preview",
         "format": "prettier --write .",
         "storybook": "storybook dev -p 6006",
@@ -23,6 +24,8 @@
     "devDependencies": {
         "@chromatic-com/storybook": "^4.0.0-0",
         "@eslint/js": "^9.25.0",
+        "@faker-js/faker": "^9.8.0",
+        "@mswjs/data": "^0.16.2",
         "@storybook/addon-a11y": "^9.0.1",
         "@storybook/addon-docs": "^9.0.1",
         "@storybook/addon-onboarding": "^9.0.1",
@@ -40,6 +43,7 @@
         "eslint-plugin-react-refresh": "^0.4.19",
         "eslint-plugin-storybook": "^9.0.1",
         "globals": "^16.0.0",
+        "msw": "^2.8.6",
         "playwright": "^1.52.0",
         "prettier": "^3.5.3",
         "storybook": "^9.0.1",
@@ -47,5 +51,10 @@
         "typescript-eslint": "^8.30.1",
         "vite": "^6.3.5",
         "vitest": "^3.1.4"
+    },
+    "msw": {
+        "workerDirectory": [
+            "public"
+        ]
     }
 }

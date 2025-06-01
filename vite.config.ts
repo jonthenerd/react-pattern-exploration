@@ -6,14 +6,12 @@ import { TanStackRouterVite } from "@tanstack/router-plugin/vite";
 // https://vite.dev/config/
 export default defineConfig({
     build: {
-        minify: false // Disable minification for easier debugging
+        minify: false // Disable minification for easier reviewing of the output
     },
     plugins: [
         TanStackRouterVite({
             target: "react",
-            autoCodeSplitting: true,
-            routeFileIgnorePattern:
-                "components|assets|styles|stories|.spec.|page.tsx"
+            autoCodeSplitting: true
         }),
         react()
     ],
