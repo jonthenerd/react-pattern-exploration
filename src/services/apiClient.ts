@@ -31,6 +31,32 @@ export class ApiClient {
             success: true
         };
     }
+
+    async post(url: string, options: RequestInit): Promise<ApiResponse> {
+        const response = await fetch(url, {
+            ...options,
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                ...options.headers
+            }
+        });
+
+        if (!response.ok) {
+            return {
+                success: false,
+                httpStatus: response.status,
+                error: response.statusText
+            };
+        }
+
+        const json = await response.json();
+
+        return {
+            data: json,
+            success: true
+        };
+    }
 }
 
 export const apiClient = new ApiClient();

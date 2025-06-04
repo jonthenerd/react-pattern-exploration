@@ -17,6 +17,10 @@ export const itemsListSchema = z.object({
     items: z.array(itemSchema)
 });
 
+export const itemCreateResponseSchema = z.object({
+    itemUrl: z.string()
+});
+
 export async function fetchItemsAsync(): Promise<Item[]> {
     const response = await apiClient.get("/api/items");
     if (!response.success) {
@@ -30,4 +34,25 @@ export async function fetchItemsAsync(): Promise<Item[]> {
         return [];
     }
     return parse.data.items;
+}
+
+export async function createItemAsync(
+    item: Omit<Item, "id">
+): Promise<string | null> {
+    const response = await apiClient.post("/api/items", {
+        method: "POST",
+        body: JSON.stringify(item)
+    });
+
+    if (!response.success) {
+        console.error("Failed to create item:", response.error);
+        return null;
+    }
+
+    const parse = itemCreateResponseSchema.safeParse(response.data);
+    if (!parse.success) {
+        console.error("Invalid item data schema:", parse.error);
+        return null;
+    }
+    return parse.data.itemUrl;
 }

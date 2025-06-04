@@ -1,6 +1,6 @@
 import { db } from "@/mocks/db";
 import { type Item } from "@/model/items";
-import { http, HttpResponse } from "msw";
+import { delay, http, HttpResponse } from "msw";
 
 type Params = never;
 
@@ -22,6 +22,8 @@ export const createHandler = http.post<
         summary: itemData.summary,
         description: itemData.description
     });
+
+    await delay();
 
     return HttpResponse.json({
         itemUrl: `/items/${item.id}}`
