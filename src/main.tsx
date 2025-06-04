@@ -28,15 +28,15 @@ async function enableMocking() {
     return worker.start();
 }
 
-await enableMocking();
-
-// Render the app
-const rootElement = document.getElementById("root")!;
-if (!rootElement.innerHTML) {
-    const root = createRoot(rootElement);
-    root.render(
-        <StrictMode>
-            <RouterProvider router={router} />
-        </StrictMode>
-    );
-}
+enableMocking().then(() => {
+    // Render the app
+    const rootElement = document.getElementById("root")!;
+    if (!rootElement.innerHTML) {
+        const root = createRoot(rootElement);
+        root.render(
+            <StrictMode>
+                <RouterProvider router={router} />
+            </StrictMode>
+        );
+    }
+});

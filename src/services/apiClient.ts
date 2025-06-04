@@ -1,3 +1,5 @@
+// This is just a very simple API client, not intended for production use.
+
 export interface ApiResponse {
     data?: unknown;
     success: boolean;
