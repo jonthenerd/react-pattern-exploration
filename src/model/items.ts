@@ -1,17 +1,16 @@
 import { apiClient } from "@/services/apiClient";
 import { z } from "zod/v4";
 
-export interface Item {
-    id?: string;
-    summary: string;
-    description: string;
-}
-
 export const itemSchema = z.object({
     id: z.uuid(),
     summary: z.string(),
     description: z.string()
 });
+
+export const newItemSchema = itemSchema.omit({ id: true });
+
+export type Item = z.infer<typeof itemSchema>;
+export type NewItem = z.infer<typeof newItemSchema>;
 
 export const itemsListSchema = z.object({
     items: z.array(itemSchema)
@@ -37,11 +36,11 @@ export async function fetchItemsAsync(): Promise<Item[]> {
 }
 
 export async function createItemAsync(
-    item: Omit<Item, "id">
+    newItem: NewItem
 ): Promise<string | null> {
     const response = await apiClient.post("/api/items", {
         method: "POST",
-        body: JSON.stringify(item)
+        body: JSON.stringify(newItem)
     });
 
     if (!response.success) {

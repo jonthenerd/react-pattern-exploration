@@ -3,9 +3,13 @@ import { useNavigate } from "@tanstack/react-router";
 import { useActionState } from "react";
 import { type CreateItemsPageProps } from "./page";
 
+export interface FormState {
+    error?: string;
+}
+
 export function useCreateItemPage(): CreateItemsPageProps {
     const navigate = useNavigate({ from: "/items/create" });
-    const [error, submitAction, isPending] = useActionState(
+    const [state, submitAction, isPending] = useActionState<FormState>(
         async (previousState, formData) => {
             const createdItem = await createItemAsync({
                 summary: formData.get("summary") as string,
@@ -15,8 +19,8 @@ export function useCreateItemPage(): CreateItemsPageProps {
             if (!createdItem) {
                 return new Error("Failed to create item");
             }
-            if (error) {
-                return error;
+            if (state.error) {
+                return state.error;
             }
             navigate({ to: "/items" });
             return null;
